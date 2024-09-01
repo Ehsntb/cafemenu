@@ -1,4 +1,5 @@
 "use strict";
+const flash = require("express-flash");
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Complex extends Model {
@@ -13,21 +14,26 @@ module.exports = (sequelize, DataTypes) => {
   }
   Complex.init(
     {
-      name: DataTypes.STRING,
-      type: DataTypes.ENUM("cafe", "restuarant", "both"),
+      name: { type: DataTypes.STRING, allowNull: false },
+      type: {
+        type: DataTypes.ENUM("cafe", "restuarant", "both"),
+        allowNull: false,
+        defaultValue: "both",
+      },
       location: DataTypes.STRING,
       address: DataTypes.STRING,
       description: DataTypes.STRING,
       working_hours: DataTypes.STRING,
       working_days: DataTypes.STRING,
-      phone: DataTypes.STRING,
-      email: DataTypes.STRING,
+      phone: { type: DataTypes.STRING, allowNull: false },
+      email: { type: DataTypes.STRING, allowNull: false },
       image_url: DataTypes.STRING,
-      short_link: DataTypes.STRING,
+      short_link: { type: DataTypes.STRING, allowNull: false },
     },
     {
       sequelize,
       modelName: "Complex",
+      timestamps: true,
     }
   );
   return Complex;

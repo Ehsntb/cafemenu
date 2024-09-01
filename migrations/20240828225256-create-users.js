@@ -17,7 +17,6 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
       name: {
         type: Sequelize.STRING,
@@ -27,6 +26,9 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
+        validate: {
+          isEmail: true,
+        },
       },
       available: {
         type: Sequelize.BOOLEAN,
