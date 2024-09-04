@@ -9,10 +9,13 @@
 # echo "Creating the database..."
 # npx sequelize-cli db:create
 
+echo "Running migrations before undo all..."
+npx sequelize-cli db:migrate
+
 echo "Undo all migrayions..."
 npx sequelize-cli db:migrate:undo:all
 
-echo "Running migrations..."
+echo "Running migrations after undo all..."
 npx sequelize-cli db:migrate
 
 echo "Running seeders..."

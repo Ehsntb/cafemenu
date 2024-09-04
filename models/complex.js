@@ -27,12 +27,11 @@ module.exports = (sequelize, DataTypes) => {
       working_days: DataTypes.STRING,
       phone: { type: DataTypes.STRING, allowNull: false },
       email: { type: DataTypes.STRING, allowNull: false },
-      image_url: DataTypes.STRING,
       short_link: { type: DataTypes.STRING, allowNull: false },
     },
     {
       sequelize,
-      modelName: "Complex",
+      modelName: "Complexes",
       timestamps: true,
     }
   );

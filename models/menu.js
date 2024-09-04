@@ -1,7 +1,8 @@
 "use strict";
+const flash = require("express-flash");
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class userComplex extends Model {
+  class Menu extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,28 +12,33 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  userComplex.init(
+  Menu.init(
     {
-      userId: {
+      complexId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: { model: "users", key: "id" },
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       },
-      complexId: {
+      name: { type: DataTypes.STRING, allowNull: false },
+      number_of_tables: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: { model: "complexes", key: "id" },
-        onDelete: "CASCADE",
-        onUpdate: "CASCADE",
+        defaultValue: 1,
+      },
+      description: DataTypes.TEXT,
+      short_link: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
       },
     },
     {
       sequelize,
-      modelName: "userComplex",
+      modelName: "Menus",
       timestamps: true,
     }
   );
-  return userComplex;
+  return Menu;
 };

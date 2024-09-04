@@ -1,52 +1,43 @@
 "use strict";
-
-const flash = require("express-flash");
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Complexes", {
+    await queryInterface.createTable("menuItems", {
       id: {
-        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
+      menuId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: "menus", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
+      categoryId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: "categories", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      type: {
-        type: Sequelize.ENUM("cafe", "restuarant", "both"),
-        allowNull: false,
-        defaultValue: "both",
-      },
-      location: {
-        type: Sequelize.STRING,
-      },
-      address: {
-        type: Sequelize.STRING,
-      },
       description: {
-        type: Sequelize.STRING,
-      },
-      working_hours: {
-        type: Sequelize.STRING,
-      },
-      working_days: {
-        type: Sequelize.STRING,
-      },
-      phone: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
       },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
+      price: {
+        type: Sequelize.DECIMAL,
       },
       short_link: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       createdAt: {
         allowNull: false,
@@ -59,6 +50,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Complexes");
+    await queryInterface.dropTable("menuItems");
   },
 };
