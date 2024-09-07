@@ -1,6 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 const { nanoid } = require("nanoid");
+
 module.exports = (sequelize, DataTypes) => {
   class Category extends Model {
     /**
@@ -26,23 +27,13 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
         defaultValue: function () {
           // Placeholder default value, can be adjusted or removed if necessary
-          return `https://short.link/${nanoid(8)}`;
+          return `/category/${nanoid(8)}`;
         },
       },
     },
     {
       sequelize,
       modelName: "Categories",
-      hooks: {
-        beforeCreate: async (Category, options) => {
-          // Wait for ID generation if not using auto-generated IDs
-          await Category.save();
-          // Generate the short_link using the name and id
-          Category.short_link = `/${Category.name.replace(/\s+/g, "_")}_${
-            Category.id
-          }`;
-        },
-      },
       timestamps: true,
     }
   );

@@ -34,6 +34,15 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
       },
+      short_link: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+        defaultValue: function () {
+          // Placeholder default value, can be adjusted or removed if necessary
+          return `/category/${nanoid(8)}`;
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

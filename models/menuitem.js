@@ -1,5 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
+const nanoid = require("nanoid");
+
 module.exports = (sequelize, DataTypes) => {
   class menuItem extends Model {
     /**
@@ -34,6 +36,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+        defaultValue: function () {
+          // Placeholder default value, can be adjusted or removed if necessary
+          return `/menu-item?nanoid=${nanoid(8)}`;
+        },
       },
     },
     {

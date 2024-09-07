@@ -1,4 +1,6 @@
 "use strict";
+const nanoid = require("nanoid");
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -22,6 +24,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
+        defaultValue: function () {
+          // Placeholder default value, can be adjusted or removed if necessary
+          return `/category/${nanoid(8)}`;
+        },
       },
       createdAt: {
         allowNull: false,
