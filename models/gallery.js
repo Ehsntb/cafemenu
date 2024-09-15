@@ -1,6 +1,7 @@
 "use strict";
 const nanoid = require("nanoid");
 const { Model } = require("sequelize");
+const { nanoid } = require("nanoid");
 
 module.exports = (sequelize, DataTypes) => {
   class Gallery extends Model {
@@ -16,17 +17,20 @@ module.exports = (sequelize, DataTypes) => {
   Gallery.init(
     {
       mediaUrl: { type: DataTypes.STRING, allowNull: false },
-      mediaType: { type: DataTypes.STRING, allowNull: false },
+      mediaType: {
+        type: DataTypes.ENUM("complex", "menu", "category", "item"),
+        allowNull: false,
+      }, //complex, menu, category, menu-item
       mediaId: { type: DataTypes.INTEGER, allowNull: false },
-      mediaType: { type: DataTypes.STRING, allowNull: false },
+      Type: {
+        type: DataTypes.ENUM("image", "video", "icon"),
+        allowNull: false,
+      }, //image, video, icon
       short_link: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        defaultValue: function () {
-          // Placeholder default value, can be adjusted or removed if necessary
-          return `/category/${nanoid(8)}`;
-        },
+        defaultValue: () => `/gallery?sl=${nanoid(8)}`,
       },
     },
     {

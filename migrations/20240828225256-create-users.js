@@ -1,7 +1,10 @@
 "use strict";
 /** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
+    const { nanoid } = await import("nanoid");
+
     await queryInterface.createTable("Users", {
       id: {
         type: Sequelize.INTEGER,
@@ -38,10 +41,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
-        defaultValue: function () {
-          // Placeholder default value, can be adjusted or removed if necessary
-          return `/category/${nanoid(8)}`;
-        },
+        defaultValue: () => `/user?sl=${nanoid(8)}`,
       },
       createdAt: {
         allowNull: false,

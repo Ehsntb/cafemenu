@@ -1,9 +1,10 @@
 "use strict";
 /** @type {import('sequelize-cli').Migration} */
-const nanoid = require("nanoid");
 
 module.exports = {
   async up(queryInterface, Sequelize) {
+    const { nanoid } = await import("nanoid");
+
     await queryInterface.createTable("menuItems", {
       id: {
         allowNull: false,
@@ -33,6 +34,16 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
+      available: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+      },
+      inventory: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+      },
       price: {
         type: Sequelize.DECIMAL,
       },
@@ -40,10 +51,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
-        defaultValue: function () {
-          // Placeholder default value, can be adjusted or removed if necessary
-          return `/menu-item?nanoid=${nanoid(8)}`;
-        },
+        defaultValue: () => `/menu-item?sl=${nanoid(8)}`,
       },
       createdAt: {
         allowNull: false,

@@ -1,7 +1,10 @@
 "use strict";
 /** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
+    const { nanoid } = await import("nanoid");
+
     await queryInterface.createTable("Menus", {
       id: {
         allowNull: false,
@@ -32,6 +35,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
+        defaultValue: () => `/menu?sl=${nanoid(8)}`,
       },
       createdAt: {
         allowNull: false,

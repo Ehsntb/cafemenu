@@ -1,6 +1,8 @@
 "use strict";
 const flash = require("express-flash");
 const { Model } = require("sequelize");
+const { nanoid } = require("nanoid");
+
 module.exports = (sequelize, DataTypes) => {
   class Menu extends Model {
     /**
@@ -32,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+        defaultValue: () => `/menu-item?sl=${nanoid(8)}`,
       },
     },
     {

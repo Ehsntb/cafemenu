@@ -25,10 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        defaultValue: function () {
-          // Placeholder default value, can be adjusted or removed if necessary
-          return `/category/${nanoid(8)}`;
-        },
+        defaultValue: () => `/category?sl=${nanoid(8)}`,
       },
     },
     {

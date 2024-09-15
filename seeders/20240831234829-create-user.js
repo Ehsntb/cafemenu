@@ -23,11 +23,12 @@ module.exports = {
       "Users",
       [
         {
-          username: "admin",
+          username: "superadmin",
           password:
             "$2a$10$YIjAO1cNc3QaBDv1EQ5dwuAmKvmBQScnA8o0aJm5DvcBTxywSjs3K",
-          name: "admin",
+          name: "superadmin",
           email: "admin@example.com",
+          short_link: "/user?sl=superadmin",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
