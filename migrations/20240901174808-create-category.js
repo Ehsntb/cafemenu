@@ -16,10 +16,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      complexId: {
+      menuId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: "complexes", key: "id" },
+        references: { model: "menus", key: "id" },
       },
       short_link: {
         type: Sequelize.STRING,

@@ -16,10 +16,10 @@ module.exports = (sequelize, DataTypes) => {
   Category.init(
     {
       name: { type: DataTypes.STRING, allowNull: false },
-      complexId: {
+      menuId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: { model: "complexes", key: "id" },
+        references: { model: "menus", key: "id" },
       },
       short_link: {
         type: DataTypes.STRING,

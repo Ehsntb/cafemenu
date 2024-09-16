@@ -42,14 +42,13 @@ fs.readdirSync(__dirname)
 const User = db.User;
 const Role = db.Role;
 const UserRole = db.UserRole;
-const Restaurant = db.Restaurant;
-const RestaurantStaff = db.RestaurantStaff;
+const complex = db.complex;
 
 // User <--> Role (Many-to-Many)
 User.belongsToMany(Role, { through: UserRole, foreignKey: "userId" });
 Role.belongsToMany(User, { through: UserRole, foreignKey: "roleId" });
 
-// User <--> Restaurant (Many-to-Many)
+// User <--> complex (Many-to-Many)
 User.belongsToMany(Restaurant, {
   through: RestaurantStaff,
   foreignKey: "userId",
