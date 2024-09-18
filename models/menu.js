@@ -11,7 +11,23 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Menu.belongsTo(models.Complex, {
+        foreignKey: "complexId",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      });
+
+      Menu.hasMany(models.Category, {
+        foreignKey: "menuId",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      });
+
+      Menu.hasMany(models.QRCode, {
+        foreignKey: "menuId",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      });
     }
   }
   Menu.init(
@@ -19,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
       complexId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: { model: "users", key: "id" },
+        references: { model: "complexes", key: "id" },
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       },
@@ -34,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        defaultValue: () => `/menu-item?sl=${nanoid(8)}`,
+        defaultValue: () => `/menu?sl=${nanoid(8)}`,
       },
     },
     {

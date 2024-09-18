@@ -9,7 +9,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Complex.belongsToMany(models.Users, {
+        through: models.userComplex,
+        foreignKey: "complexId",
+      });
+
+      Complex.hasMany(models.Menu, {
+        foreignKey: "complexId",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      });
     }
   }
   Complex.init(

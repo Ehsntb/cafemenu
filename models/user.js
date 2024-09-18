@@ -2,6 +2,7 @@
 const { Model } = require("sequelize");
 const bcrypt = require("bcrypt");
 const { nanoid } = require("nanoid");
+const { model } = require("mongoose");
 
 module.exports = (sequelize, DataTypes) => {
   class Users extends Model {
@@ -11,7 +12,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Users.belongsToMany(models.Role, {
+        through: models.userRole,
+        foreignKey: "userId",
+      });
+      Users.belongsToMany(models.Complex, {
+        through: models.userComplex,
+        foreignKey: "userId",
+      });
     }
   }
   Users.init(
@@ -29,6 +37,9 @@ module.exports = (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      phone: {
+        type: DataTypes.STRING,
       },
       email: {
         type: DataTypes.STRING,

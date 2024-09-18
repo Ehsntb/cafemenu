@@ -10,18 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      menuItem.belongsTo(models.Category, {
+        foreignKey: "categoryId",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      });
     }
   }
   menuItem.init(
     {
-      menuId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: { model: "menus", key: "id" },
-        onDelete: "CASCADE",
-        onUpdate: "CASCADE",
-      },
       categoryId: {
         type: DataTypes.INTEGER,
         allowNull: false,

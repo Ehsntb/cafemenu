@@ -12,13 +12,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      menuId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model: "menus", key: "id" },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
-      },
       categoryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
