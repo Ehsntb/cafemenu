@@ -2,6 +2,7 @@
 const flash = require("express-flash");
 const { Model } = require("sequelize");
 const { nanoid } = require("nanoid");
+const QRCode = require("./qrcode");
 
 module.exports = (sequelize, DataTypes) => {
   class Menu extends Model {
@@ -50,13 +51,27 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        defaultValue: () => `/menu?sl=${nanoid(8)}`,
+        defaultValue: () => `${nanoid(8)}`,
       },
     },
     {
       sequelize,
       modelName: "Menus",
       timestamps: true,
+      hooks: {
+        afterCreate: async (menu, options) => {
+          const qrCodes = [];
+          for (let i = 1; i <= menu.number_of_tables; i++) {
+            const qrCodeLink = `/menu?sl=${menu.short_link}&table=${i}`;
+            qrCodes.push({
+              menuId: menu.id,
+              table_number: i,
+              qr_code_link: qrCodeLink,
+            });
+          }
+          await QRCode.bulkCreate(qrCodes); // Insert multiple QR codes at once
+        },
+      },
     }
   );
   return Menu;

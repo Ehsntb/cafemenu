@@ -11,7 +11,37 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Gallery.belongsTo(models.Menu, {
+        foreignKey: "mediaId",
+        constraints: false,
+        scope: {
+          mediaType: "menu",
+        },
+      });
+
+      Gallery.belongsTo(models.Category, {
+        foreignKey: "mediaId",
+        constraints: false,
+        scope: {
+          mediaType: "category",
+        },
+      });
+
+      Gallery.belongsTo(models.menuItem, {
+        foreignKey: "mediaId",
+        constraints: false,
+        scope: {
+          mediaType: "item",
+        },
+      });
+
+      Gallery.belongsTo(models.Complex, {
+        foreignKey: "mediaId",
+        constraints: false,
+        scope: {
+          mediaType: "complex",
+        },
+      });
     }
   }
   Gallery.init(
