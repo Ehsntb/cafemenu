@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
-        defaultValue: () => `/category?sl=${nanoid(8)}`,
+        defaultValue: () => `${nanoid(8)}`,
       },
       createdAt: {
         allowNull: false,

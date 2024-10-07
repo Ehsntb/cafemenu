@@ -1,0 +1,27 @@
+{
+  "url": "https://mizmenu.ir",
+  "name_en": "Miz Menu",
+  "name_fa": "میز منو",
+  "description_en": "Miz Menu is a digital menu service that enables users to view a restaurant or café’s menu by scanning QR codes or NFC tags. This innovative solution offers a seamless and contactless way for customers to explore menu options, enhancing the overall dining experience.",
+  "description_fa": "میز منو یک سرویس منوی دیجیتال است که به کاربران این امکان را می‌دهد تا با اسکن کردن کدهای QR یا برچسب‌های NFC، منوی رستوران یا کافه را مشاهده کنند. این راهکار نوآورانه، راهی بی‌دردسر و بدون تماس برای مشتریان فراهم می‌کند تا گزینه‌های منو را بررسی کنند و تجربه‌ی کلی غذاخوری را بهبود بخشد.",
+  "icon": "",
+  "logo": "",
+  "category": "Digital menu",
+  "subcategory": "QR code, NFC tag",
+  "tags_en": ["digital menu", "QR code", "NFC tag", "contactless", "seamless"],
+  "tags_fa": ["منو دیجیتال", "کد QR", "برچسب NFC", "بی‌دردسر", "بی‌طرف"],
+
+  "author_ehsan_name_fa": "احسان طباطبایی",
+  "author_ehsan_name_en": "Ehsan Tabatabaei",
+  "author_ehsan_url": "https://ehsntb.ir",
+  "author_ehsan_description_fa": "**احسان طباطبایی**، طراح و توسعه‌دهنده وب این سایت است.",
+  "author_ehsan_description_en": "**Ehsan Tabatabaei** is the designer and developer of this website.",
+  "author_ehsan_image": "https://ehsntb.ir/images/Ehsan.jpg",
+  "author_ehsan_image_alt": "Ehsan Tabatabaei",
+  "author_ehsan_image_title": "Ehsan Tabatabaei",
+  "author_ehsan_image_description_fa": "تصویر احسان طباطبایی",
+  "author_ehsan_image_description_en": "Ehsan Tabatabaei's image",
+  "author_ehsan_image_width": 400,
+  "author_ehsan_image_height": 400,
+  "author_ehsan_image_type": "image/jpeg"
+}

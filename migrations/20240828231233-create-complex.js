@@ -17,7 +17,7 @@ module.exports = {
         allowNull: false,
       },
       type: {
-        type: Sequelize.ENUM("cafe", "restuarant", "both"),
+        type: Sequelize.ENUM("cafe", "restaurant", "both"),
         allowNull: false,
         defaultValue: "both",
       },
