@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/Ehsntb/cafemenu#readme",
   "dependencies": {
+    "@adminjs/design-system": "^4.0.5",
+    "@adminjs/express": "^6.1.0",
+    "@adminjs/sequelize": "^4.1.1",
+    "@tinymce/tinymce-react": "^5.1.1",
+    "adminjs": "^7.6.1",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cookie-parser": "~1.4.4",
@@ -32,7 +37,8 @@
     "nodemon": "^3.1.4",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^6.37.3",
-    "sequelize-cli": "^6.6.2"
+    "sequelize": "^6.37.4",
+    "sequelize-cli": "^6.6.2",
+    "tinymce": "^7.4.1"
   }
 }
