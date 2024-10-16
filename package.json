@@ -1,6 +1,7 @@
 {
   "name": "cafemenu",
   "version": "1.0.0",
+  "type": "module",
   "description": "cafemenu with mysql sequelize",
   "main": "app.js",
   "scripts": {
@@ -22,7 +23,7 @@
     "@adminjs/sequelize": "^4.1.1",
     "@tinymce/tinymce-react": "^5.1.1",
     "adminjs": "^7.6.1",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -31,6 +32,7 @@
     "express-flash": "^0.0.2",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.11.0",
     "nanoid": "^5.0.7",
@@ -39,6 +41,12 @@
     "passport-local": "^1.0.0",
     "sequelize": "^6.37.4",
     "sequelize-cli": "^6.6.2",
-    "tinymce": "^7.4.1"
+    "tinymce": "^7.4.1",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.9",
+    "@types/node": "^22.7.5",
+    "@types/react": "^18.3.11"
   }
 }

@@ -1,10 +1,10 @@
 "use strict";
-const flash = require("express-flash");
-const { Model } = require("sequelize");
-const { nanoid } = require("nanoid");
-const QRCode = require("./qrcode");
+import flash from "express-flash";
+import { Model } from "sequelize";
+import { nanoid } from "nanoid";
+import { bulkCreate } from "./qrcode";
 
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   class Menu extends Model {
     /**
      * Helper method for defining associations.
@@ -69,7 +69,7 @@ module.exports = (sequelize, DataTypes) => {
               qr_code_link: qrCodeLink,
             });
           }
-          await QRCode.bulkCreate(qrCodes); // Insert multiple QR codes at once
+          await bulkCreate(qrCodes); // Insert multiple QR codes at once
         },
       },
     }

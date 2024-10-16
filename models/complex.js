@@ -1,7 +1,7 @@
 "use strict";
-const flash = require("express-flash");
-const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
+import flash from "express-flash";
+import { Model } from "sequelize";
+export default (sequelize, DataTypes) => {
   class Complex extends Model {
     /**
      * Helper method for defining associations.

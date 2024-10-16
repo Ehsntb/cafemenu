@@ -1,10 +1,10 @@
 "use strict";
-const { Model } = require("sequelize");
-const bcrypt = require("bcrypt");
-const { nanoid } = require("nanoid");
-const { model } = require("mongoose");
+import { Model } from "sequelize";
+import { hash } from "bcrypt";
+import { nanoid } from "nanoid";
+import { model } from "mongoose";
 
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   class Users extends Model {
     /**
      * Helper method for defining associations.
@@ -67,13 +67,13 @@ module.exports = (sequelize, DataTypes) => {
         beforeCreate: async (user, options) => {
           if (user.password) {
             // const salt = await bcrypt.genSalt(10);
-            user.password = await bcrypt.hash(user.password, 10);
+            user.password = await hash(user.password, 10);
           }
         },
         beforeUpdate: async (user, options) => {
           if (user.changed("password")) {
             // const salt = await bcrypt.genSalt(10);
-            user.password = await bcrypt.hash(user.password, 10);
+            user.password = await hash(user.password, 10);
           }
         },
       },

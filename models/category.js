@@ -1,8 +1,8 @@
 "use strict";
-const { Model } = require("sequelize");
-const { nanoid } = require("nanoid");
+import { Model } from "sequelize";
+import { nanoid } from "nanoid";
 
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   class Category extends Model {
     /**
      * Helper method for defining associations.
