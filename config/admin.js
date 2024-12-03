@@ -1,9 +1,10 @@
 // config/admin.js
-import AdminJS, { registerAdapter } from "adminjs";
-import { buildAuthenticatedRouter } from "@adminjs/express";
-import AdminJSSequelize from "@adminjs/sequelize";
-import sequelize from "../models"; // Import your Sequelize instance
-import { compareSync } from "bcryptjs";
+const AdminJS = require("adminjs");
+const { registerAdapter } = AdminJS;
+const { buildAuthenticatedRouter } = require("@adminjs/express");
+const AdminJSSequelize = require("@adminjs/sequelize");
+const sequelize = require("../models"); // Import your Sequelize instance
+const { compareSync } = require("bcryptjs");
 
 const {
   category,
@@ -119,6 +120,7 @@ const adminJs = new AdminJS({
     // Add other models as needed
   ],
 });
+adminJs.watch();
 
 // Helper function to check user roles
 async function hasRole(user, roles) {

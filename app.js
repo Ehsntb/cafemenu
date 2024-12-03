@@ -10,6 +10,7 @@ import logger from "morgan";
 import session from "express-session";
 import bcrypt from "bcryptjs";
 import { AdminJS, buildAdminRouter } from "./config/admin.js";
+
 const router = Route();
 
 const app = express();
@@ -26,7 +27,7 @@ app.set("view engine", "ejs"); // Assuming you're using EJS as your templating e
 // Session management
 app.use(
   session({
-    secret: "your-session-secret",
+    secret: "sessionsecret",
     resave: false,
     saveUninitialized: true,
   })
